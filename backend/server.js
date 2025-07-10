@@ -1,7 +1,6 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import mongoose from "mongoose";
 import { connectDB } from "./config/db.js";
 
 import foodRouter from "./routes/foodRoute.js";
@@ -20,7 +19,17 @@ const port = process.env.PORT || 8080;
 
 // Middleware
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    "http://localhost:5174", 
+    "https://foodflyers-frontend.vercel.app",
+    "https://foodflyers-admin.vercel.app",
+    process.env.FRONTEND_URL,
+    process.env.ADMIN_URL
+  ].filter(Boolean),
+  credentials: true
+}));
 
 // DB connection
 connectDB();
@@ -41,3 +50,6 @@ app.get("/", (req, res) => {
 app.listen(port, () => {
   console.log(`Server Started on http://localhost:${port}`);
 });
+
+// Export for serverless deployment
+export default app;
