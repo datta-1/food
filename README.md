@@ -30,7 +30,3 @@ Add delivery tracking with live location updates.
 Enable multi-restaurant support for scalability.
 Add personalized recommendations based on user preferences.
 Integrate table reservation functionality for dine-in options.
-
-📬 Contact
-For any inquiries or feedback, feel free to reach out:
-📧 neha.contact295@gmail.com
